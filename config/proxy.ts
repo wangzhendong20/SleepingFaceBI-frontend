@@ -23,17 +23,17 @@ export default {
   // },
   // build: {
   //   '/userApi': {
-  //     'target': 'http://139.155.130.108:8099/',
+  //     'target': 'http://localhost:8099/',
   //     'changeOrigin': true,
   //     'pathRewrite': { '^/userApi' : '/userApi' },
   //   },
   //   '/chartApi': {
-  //     'target': 'http://139.155.130.108:8099/',
+  //     'target': 'http://localhost:8099/',
   //     'changeOrigin': true,
   //     'pathRewrite': { '^/chartApi' : '/chartApi' },
   //   },
   //   '/textApi': {
-  //     'target': 'http://139.155.130.108:8099/',
+  //     'target': 'http://localhost:8099/',
   //     'changeOrigin': true,
   //     'pathRewrite': { '^/textApi' : '/textApi' },
   //   },

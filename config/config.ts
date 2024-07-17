@@ -74,7 +74,7 @@ export default defineConfig({
    * @name layout 插件
    * @doc https://umijs.org/docs/max/layout-menu
    */
-  title: '智能 BI',
+  title: 'SleepingFace BI',
   layout: {
     locale: true,
     ...defaultSettings,

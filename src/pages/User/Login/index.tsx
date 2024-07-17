@@ -92,8 +92,8 @@ const Login: React.FC = () => {
             maxWidth: '75vw',
           }}
           logo={<img alt="logo" src="/logo.svg"/>}
-          title="智能 BI"
-          subTitle={'智能 BI 是吉世界开发的全栈项目'}
+          title="SleepingFace BI"
+          subTitle={'SleepingFace BI 纵享丝滑体验'}
           initialValues={{
             autoLogin: true,
           }}
