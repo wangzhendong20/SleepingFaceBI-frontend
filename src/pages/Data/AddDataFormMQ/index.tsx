@@ -45,7 +45,7 @@ const AddDataMQ: React.FC = () => {
 
   return (
     <div className="add-data-async">
-      <Card title="数据清洗">
+      <Card title="数据表格生成">
         <Form form={form} name="addData" labelAlign="left" labelCol={{ span: 4 }}
               wrapperCol={{ span: 16 }} onFinish={onFinish} initialValues={{}}>
           <Form.Item name="name"
@@ -70,7 +70,7 @@ const AddDataMQ: React.FC = () => {
               ]}
             />
           </Form.Item>
-          <Form.Item name="file" label="原始数据"  rules={[{ required: true, message: '笔记不能为空' }]}>
+          <Form.Item name="file" label="原始数据"  rules={[{ required: false, message: '为空' }]}>
             <Upload name="file" maxCount={1}>
               <Button icon={<UploadOutlined />}>上传 xlsx/csv 文件</Button>
             </Upload>
