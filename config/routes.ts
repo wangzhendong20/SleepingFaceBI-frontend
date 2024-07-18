@@ -5,6 +5,7 @@
     routes: [
       {path: '/my_result/my_chart',name: '我的图表', component: './My/MyChart'},
       {path: '/my_result/my_md',name: '我的文本', component: './My/MyText'},
+      {path: '/my_result/my_data',name: '我的数据', component: './My/MyData'},
     ]},
   {path: '/chart', name: '智能图表分析', icon: 'pieChart',
     hideChildrenInMenu: false,
@@ -17,6 +18,13 @@
     routes: [
       {path: '/text/add', name: '文本分析', component: './Text/AddTextMQ'},
       {path: '/text/info/:id',component: './Text/MyTextInfo'},
+    ]},
+  {path: '/data', name: '智能数据处理', icon: 'read',
+    hideChildrenInMenu: false,
+    routes: [
+      {path: '/data/gen/async/mq', name: '格式转换', component: './Data/AddDataMQ'},
+      {path: '/data/genClean/async/mq', name: '数据清洗', component: './Data/AddDataCleanMQ'},
+      {path: '/data/genChoose/async/mq', name: '数据筛选', component: './Data/AddDataChooseMQ'},
     ]},
   {path: '/chatAI', name: 'SleepingFace小助手', icon: 'read',
     hideChildrenInMenu: false,

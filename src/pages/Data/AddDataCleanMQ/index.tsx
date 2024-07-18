@@ -2,15 +2,15 @@ import { UploadOutlined } from '@ant-design/icons';
 import {Button, Card, Col, Divider, Form, Input, message, Row, Select, Space, Spin, Upload} from 'antd';
 import React, { useState } from 'react';
 import {
-  genTextTaskAsyncAiMq
+  genDataTaskAsyncAiMq
 
-} from "@/services/text/textController";
+} from "@/services/data/dataController";
 import {useForm} from "antd/es/form/Form";
 /**
  * 添加文本（异步）页面
  * @constructor
  */
-const AddTextMQ: React.FC = () => {
+const AddDataMQ: React.FC = () => {
   const [form] = useForm();
   const [submitting, setSubmitting] = useState<boolean>(false);
 
@@ -30,11 +30,11 @@ const AddTextMQ: React.FC = () => {
       file: undefined,
     };
     try {
-      const res = await  genTextTaskAsyncAiMq(params, {}, values.file.file.originFileObj);
+      const res = await  genDataTaskAsyncAiMq(params, {}, values.file.file.originFileObj);
       if (!res?.data) {
         message.error('分析失败');
       } else {
-        message.success('分析任务提交成功，稍后请在我的文本页面查看');
+        message.success('分析任务提交成功，稍后请在我的数据页面查看');
         form.resetFields();
       }
     } catch (e: any) {
@@ -44,30 +44,35 @@ const AddTextMQ: React.FC = () => {
   };
 
   return (
-    <div className="add-text-async">
-      <Card title="文本格式转换">
-        <Form form={form} name="addText" labelAlign="left" labelCol={{ span: 4 }}
+    <div className="add-data-async">
+      <Card title="数据清洗">
+        <Form form={form} name="addData" labelAlign="left" labelCol={{ span: 4 }}
               wrapperCol={{ span: 16 }} onFinish={onFinish} initialValues={{}}>
           <Form.Item name="name"
-                     label="文本名称"
-                     rules={[{ required: true, message: '请输入文本' }]}
+                     label="数据名称"
+                     rules={[{ required: true, message: '请输入数据' }]}
           >
-            <Input placeholder="请输入转换后的文本名称" />
+            <Input placeholder="请输入转换后的数据名称" />
 
           </Form.Item>
-          <Form.Item name="textType" label="文本类型"  rules={[{ required: true, message: '类型不能为空' }]}>
+          <Form.Item name="aim"
+                     label="目标"
+                     rules={[{ required: true, message: '请输入目标' }]}
+          >
+            <Input placeholder="请输入目标" />
+
+          </Form.Item>
+          <Form.Item name="textType" label="数据类型"  rules={[{ required: true, message: '类型不能为空' }]}>
             <Select
               options={[
-                { value: 'markdown', label: 'markdown格式' },
-                { value: 'doc', label: 'doc格式' },
-                { value: 'docx', label: 'docx格式' },
-                { value: 'txt', label: 'txt格式' },
+                { value: 'xlsx', label: 'xlsx格式' },
+                { value: 'csv', label: 'csv格式' },
               ]}
             />
           </Form.Item>
           <Form.Item name="file" label="原始数据"  rules={[{ required: true, message: '笔记不能为空' }]}>
             <Upload name="file" maxCount={1}>
-              <Button icon={<UploadOutlined />}>上传 TXT/DOC/DOCX/MD 文件</Button>
+              <Button icon={<UploadOutlined />}>上传 xlsx/csv 文件</Button>
             </Upload>
           </Form.Item>
 
@@ -84,4 +89,4 @@ const AddTextMQ: React.FC = () => {
     </div>
   );
 };
-export default AddTextMQ;
+export default AddDataMQ;
