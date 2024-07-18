@@ -191,7 +191,7 @@ export async function genDataChooseTaskAsyncAiMq(
     }
   });
 
-  return request<API.BaseResponseAiResponse>('/dataApi/dataChoose/gen/async/mq', {
+  return request<API.BaseResponseAiResponse>('/dataApi/genChoose/gen/async/mq', {
     method: 'POST',
     params: {
       ...params,
@@ -209,6 +209,59 @@ export async function genDataChooseTaskAsyncAiRebuild(
   options?: { [key: string]: any },
 ) {
   return request<API.BaseResponseAiResponse>('/dataApi/data/genChoose/async/rebuild', {
+    method: 'POST',
+    params: {
+      ...params,
+      dataRebuildRequest: undefined,
+      ...params['dataRebuildRequest'],
+    },
+    ...(options || {}),
+  });
+}
+
+/** genDataTaskAsyncAiMq POST /dataApi/data/gen/async/mq */
+export async function genDataFormTaskAsyncAiMq(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.genDataTaskAsyncAiMqParams,
+  body: {},
+  file?: File,
+  options?: { [key: string]: any },
+) {
+  const formData = new FormData();
+
+  if (file) {
+    formData.append('file', file);
+  }
+
+  Object.keys(body).forEach((ele) => {
+    const item = (body as any)[ele];
+
+    if (item !== undefined && item !== null) {
+      formData.append(
+        ele,
+        typeof item === 'object' && !(item instanceof File) ? JSON.stringify(item) : item,
+      );
+    }
+  });
+
+  return request<API.BaseResponseAiResponse>('/dataApi/genForm/gen/async/mq', {
+    method: 'POST',
+    params: {
+      ...params,
+    },
+    data: formData,
+    requestType: 'form',
+    ...(options || {}),
+  });
+}
+
+/** 此处后端没有提供注释 POST /dataApi/data/gen/async/rebuild */
+export async function genDataFormTaskAsyncAiRebuild(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.genDataTaskAsyncAiRebuildParams,
+  options?: { [key: string]: any },
+) {
+  return request<API.BaseResponseAiResponse>('/dataApi/data/genForm/async/rebuild', {
     method: 'POST',
     params: {
       ...params,

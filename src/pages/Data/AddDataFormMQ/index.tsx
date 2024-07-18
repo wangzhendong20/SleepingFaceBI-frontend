@@ -2,7 +2,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import {Button, Card, Col, Divider, Form, Input, message, Row, Select, Space, Spin, Upload} from 'antd';
 import React, { useState } from 'react';
 import {
-  genDataCleanTaskAsyncAiMq
+  genDataFormTaskAsyncAiMq
 
 } from "@/services/data/dataController";
 import {useForm} from "antd/es/form/Form";
@@ -30,7 +30,7 @@ const AddDataMQ: React.FC = () => {
       file: undefined,
     };
     try {
-      const res = await  genDataCleanTaskAsyncAiMq(params, {}, values.file.file.originFileObj);
+      const res = await  genDataFormTaskAsyncAiMq(params, {}, values.file.file.originFileObj);
       if (!res?.data) {
         message.error('分析失败');
       } else {
@@ -52,7 +52,7 @@ const AddDataMQ: React.FC = () => {
                      label="数据名称"
                      rules={[{ required: true, message: '请输入数据' }]}
           >
-            <Input placeholder="请输入转换后的数据名称" />
+            <Input placeholder="请输入生成的数据名称" />
 
           </Form.Item>
           <Form.Item name="aim"

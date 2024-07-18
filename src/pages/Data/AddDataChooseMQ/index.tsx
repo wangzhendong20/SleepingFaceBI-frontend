@@ -2,7 +2,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import {Button, Card, Col, Divider, Form, Input, message, Row, Select, Space, Spin, Upload} from 'antd';
 import React, { useState } from 'react';
 import {
-  genDataTaskAsyncAiMq
+  genDataChooseTaskAsyncAiMq
 
 } from "@/services/data/dataController";
 import {useForm} from "antd/es/form/Form";
@@ -30,7 +30,7 @@ const AddDataMQ: React.FC = () => {
       file: undefined,
     };
     try {
-      const res = await  genDataTaskAsyncAiMq(params, {}, values.file.file.originFileObj);
+      const res = await  genDataChooseTaskAsyncAiMq(params, {}, values.file.file.originFileObj);
       if (!res?.data) {
         message.error('分析失败');
       } else {

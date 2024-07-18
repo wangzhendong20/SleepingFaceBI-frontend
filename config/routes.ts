@@ -25,6 +25,7 @@
       {path: '/data/gen/async/mq', name: '格式转换', component: './Data/AddDataMQ'},
       {path: '/data/genClean/async/mq', name: '数据清洗', component: './Data/AddDataCleanMQ'},
       {path: '/data/genChoose/async/mq', name: '数据筛选', component: './Data/AddDataChooseMQ'},
+      {path: '/data/genForm/async/mq', name: '数据表格生成', component: './Data/AddDataFormMQ'},
     ]},
   {path: '/chatAI', name: 'SleepingFace小助手', icon: 'read',
     hideChildrenInMenu: false,
